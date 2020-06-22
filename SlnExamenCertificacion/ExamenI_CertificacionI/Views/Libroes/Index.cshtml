@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BEUBiblioteca.Libro>
+
+@{
+    ViewBag.Title = "Libros";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Libro", "Create", null, new { @class= "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.titulo_lib)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.autores_lib)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN_lib)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fch_public_lib)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_ejem_lib)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titulo_lib)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.autores_lib)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN_lib)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fch_public_lib)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_ejem_lib)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_lib }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_lib }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_lib }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
